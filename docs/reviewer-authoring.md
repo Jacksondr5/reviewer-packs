@@ -17,11 +17,11 @@ packs/<reviewer-id>/
   README.md
   knowledge/
     context-loading.md
-    review-checklist.md
-    handoff-guidance.md
+packs/shared/
+  reviewer-runtime.md
 ```
 
-Additional knowledge files are fine when they serve a distinct purpose. Keep the entrypoint short enough that a reviewer can quickly understand its job.
+Additional knowledge files are fine when they serve a distinct purpose. A pack may add a domain-specific checklist, or it may point to a bundled or target-repository skill that owns the checklist. Shared runtime, finding, handoff, and output instructions belong in `packs/shared/reviewer-runtime.md`. Keep the entrypoint short enough that a reviewer can quickly understand its job.
 
 ## Entrypoint README
 
@@ -33,8 +33,9 @@ The pack README should answer:
 - when it should edit code directly
 - when it should stop and report an unresolved finding
 - which knowledge files to read
+- that shared runtime and output behavior comes from `packs/shared/reviewer-runtime.md`
 
-Prefer domain-specific language. A Temporal reviewer should talk about workflow determinism, activity side effects, replay, retries, signals, and reconciliation. A Convex reviewer should talk about validators, schema rollout, index shape, auth, transaction boundaries, and read amplification.
+Prefer domain-specific language. A Temporal reviewer should talk about workflow determinism, activity side effects, replay, retries, signals, and reconciliation. A Convex reviewer should route the agent to Convex guidance and skills in the target repository instead of duplicating Convex framework rules here.
 
 ## Context Loading
 
@@ -52,6 +53,8 @@ Avoid telling every reviewer to read the entire repository or all docs before do
 ## Review Checklist
 
 The checklist should capture domain hazards that a general-purpose reviewer may miss.
+
+When a pack delegates domain review to a skill, prefer referencing that skill instead of duplicating its checklist in the pack.
 
 Write checks as concrete failure modes:
 
@@ -86,9 +89,21 @@ Use unresolved findings for:
 
 If the reviewer fixed an issue, it generally should not also report that issue as an unresolved finding. It can mention the fix in the summary and emit a handoff item when a downstream reviewer should adapt to it.
 
+## Shared Runtime Instructions
+
+`packs/shared/reviewer-runtime.md` is the coordination mechanism for behavior that should be identical across reviewers:
+
+- fix-first expectations
+- commit and push behavior
+- unresolved finding shape
+- handoff item shape
+- structured result fields
+
+Keep these rules out of individual pack READMEs unless a reviewer needs stricter domain-specific guidance.
+
 ## Handoff Items
 
-Handoff items are the coordination mechanism between sequential reviewers.
+Handoff items coordinate sequential reviewers.
 
 Good handoff items are short:
 

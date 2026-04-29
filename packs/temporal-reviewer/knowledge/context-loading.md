@@ -2,20 +2,13 @@
 
 Use this order when gathering context:
 
-1. Read the workflow entrypoints and their state/domain models.
-2. Read the activities invoked by the workflow path you are reviewing.
-3. Read signal/query definitions and any reconciliation helpers.
-4. Read docs or design notes only as needed to understand intended behavior.
+1. Read the shared runtime instructions at `packs/shared/reviewer-runtime.md`.
+2. In the target PR repository or reviewer workspace, load the relevant Temporal skills if they exist.
+3. Follow the target-repository Temporal guidance for what to inspect next.
+4. Read matched files and adjacent files only as needed to validate the behavior under review.
 
-## What Matters Most
+## Temporal Skill Reference Selection
 
-- whether workflow code stays deterministic
-- whether changes to workflow command ordering can break replay
-- whether activities own side effects and workflows own orchestration
-- whether retries/timeouts match the side-effect profile
-- whether signals/queries are handled safely
+Use the target repository's Temporal skills as the source of domain workflow and scope.
 
-## What Matters Less
-
-- generic TypeScript style issues unrelated to Temporal behavior
-- UI or API shape unless it changes orchestration semantics
+Do not load Temporal skills from this reviewer-pack repository. If target-repository Temporal skills disagree with this pack, the target-repository skills win.

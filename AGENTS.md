@@ -57,10 +57,10 @@ Each pack should have:
 - a clear primary responsibility
 - context-loading instructions
 - scope boundaries
-- a review checklist
+- a review checklist, or a domain skill that provides the checklist
 - guidance for when to edit code directly
 - guidance for unresolved findings
-- handoff guidance for later reviewers
+- handoff guidance for later reviewers, usually through `packs/shared/reviewer-runtime.md`
 
 Reviewer instructions should be evergreen. Avoid dates, deployment-specific paths, personal secrets, current incident details, or assumptions that only hold for one repository.
 
@@ -149,14 +149,6 @@ Weak reviewer guidance:
 - assumes a single target repository layout unless the reviewer is explicitly repo-specific
 - duplicates orchestrator implementation details that belong in the orchestrator repo
 
-## Convex Files In This Repo
+## Domain Skill Guidance
 
-This repository includes Convex-generated AI guidance and Convex-related skills used by the Convex reviewer pack. When changing Convex files or Convex-specific reviewer guidance, read `convex/_generated/ai/guidelines.md` first.
-
-<!-- convex-ai-start -->
-This project uses [Convex](https://convex.dev) as its backend.
-
-When working on Convex code, **always read `convex/_generated/ai/guidelines.md` first** for important guidelines on how to correctly use Convex APIs and patterns. The file contains rules that override what you may have learned about Convex from training data.
-
-Convex agent skills for common tasks can be installed by running `npx convex ai-files install`.
-<!-- convex-ai-end -->
+This repository should not include generated AI guidance or domain skill copies for reviewers. Convex and Temporal reviewer packs must defer to domain guidance and skills available in the target PR repository or reviewer workspace.

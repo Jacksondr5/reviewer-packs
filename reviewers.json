@@ -3,12 +3,11 @@
     {
       "id": "convex-reviewer",
       "title": "Convex Reviewer",
-      "description": "Reviews Convex schema, function, indexing, and data-model changes with Convex-specific guidance.",
+      "description": "Reviews Convex schema, function, indexing, and data-model changes using Convex guidance from the target repository.",
       "entrypoint": "packs/convex-reviewer/README.md",
       "knowledgeFiles": [
-        "packs/convex-reviewer/knowledge/review-checklist.md",
-        "packs/convex-reviewer/knowledge/context-loading.md",
-        "packs/convex-reviewer/knowledge/handoff-guidance.md"
+        "packs/shared/reviewer-runtime.md",
+        "packs/convex-reviewer/knowledge/context-loading.md"
       ],
       "recommendedTools": [
         "rg",
@@ -22,9 +21,8 @@
       "description": "Reviews Temporal workflow/activity/orchestration changes with determinism and recovery concerns in mind.",
       "entrypoint": "packs/temporal-reviewer/README.md",
       "knowledgeFiles": [
-        "packs/temporal-reviewer/knowledge/review-checklist.md",
-        "packs/temporal-reviewer/knowledge/context-loading.md",
-        "packs/temporal-reviewer/knowledge/handoff-guidance.md"
+        "packs/shared/reviewer-runtime.md",
+        "packs/temporal-reviewer/knowledge/context-loading.md"
       ],
       "recommendedTools": [
         "rg",

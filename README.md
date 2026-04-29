@@ -31,6 +31,8 @@ This repository owns the reviewer knowledge loaded during step 4. It does not ow
   - entrypoint for that reviewer pack
 - `packs/<reviewer-id>/knowledge/*.md`
   - supporting knowledge files for that reviewer
+- `packs/shared/reviewer-runtime.md`
+  - shared fix-first, commit, finding, handoff, and structured-output instructions
 - `docs/reviewer-authoring.md`
   - guidance for adding or updating reviewer packs
 - `docs/orchestrator-contract.md`
@@ -69,6 +71,7 @@ Keep reviewer IDs stable. The orchestrator uses them to connect repo policy, run
 - Make scope boundaries clear without forbidding necessary cross-cutting fixes.
 - Use handoff guidance to coordinate sequential reviewers.
 - Avoid storing secrets, deployment-specific paths, or temporary incident notes in pack docs.
+- Keep shared runtime/output behavior in `packs/shared/reviewer-runtime.md` instead of duplicating it in individual packs.
 
 ## Notes
 
